@@ -1,0 +1,214 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #0a0a0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 520px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.logo h1 {
+  font-size: 42px;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: -1px;
+  margin: 0 0 8px;
+}
+
+.logo h1 span {
+  font-weight: 700;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo p {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.card {
+  background: #111118;
+  border: 1px solid #1f1f2e;
+  border-radius: 16px;
+  padding: 2.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.field small {
+  font-size: 12px;
+  color: #4b5563;
+  margin-top: 4px;
+}
+
+.field small strong {
+  color: #818cf8;
+}
+
+:host ::ng-deep .field .p-inputtext {
+  background: #0d0d14 !important;
+  border: 1px solid #1f1f2e !important;
+  border-radius: 8px !important;
+  color: #e5e7eb !important;
+  font-size: 14px !important;
+  padding: 12px 16px !important;
+  width: 100% !important;
+  transition: border-color 0.2s !important;
+}
+
+:host ::ng-deep .field .p-inputtext:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+  outline: none !important;
+}
+
+:host ::ng-deep .field .p-inputtext::placeholder {
+  color: #374151 !important;
+}
+
+.toggle-row {
+  margin-bottom: 1.5rem;
+}
+
+:host ::ng-deep .p-togglebutton {
+  background: #0d0d14 !important;
+  border: 1px solid #1f1f2e !important;
+  border-radius: 8px !important;
+  color: #6b7280 !important;
+  font-size: 13px !important;
+  padding: 10px 16px !important;
+  transition: all 0.2s !important;
+}
+
+:host ::ng-deep .p-togglebutton.p-highlight {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: #6366f1 !important;
+  color: #818cf8 !important;
+}
+
+:host ::ng-deep .p-togglebutton:hover {
+  border-color: #374151 !important;
+}
+
+.erro {
+  color: #f87171;
+  font-size: 13px;
+  margin-bottom: 1.25rem;
+  padding: 10px 14px;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 8px;
+}
+
+:host ::ng-deep .btn-full .p-button {
+  width: 100% !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 13px 20px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: opacity 0.2s !important;
+  gap: 8px !important;
+}
+
+:host ::ng-deep .btn-full .p-button .p-button-icon {
+  margin: 0 !important;
+}
+
+:host ::ng-deep .btn-full .p-button .p-button-label {
+  flex: none !important;
+}
+
+:host ::ng-deep .btn-outline .p-button {
+  width: 100% !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 1px solid #1f1f2e !important;
+  border-radius: 8px !important;
+  padding: 13px 20px !important;
+  font-size: 14px !important;
+  color: #6b7280 !important;
+  margin-top: 10px !important;
+  transition: all 0.2s !important;
+  gap: 8px !important;
+}
+
+:host ::ng-deep .btn-outline .p-button .p-button-icon {
+  margin: 0 !important;
+}
+
+:host ::ng-deep .btn-outline .p-button .p-button-label {
+  flex: none !important;
+}
+
+:host ::ng-deep .btn-outline .p-button:hover {
+  border-color: #374151 !important;
+  color: #9ca3af !important;
+}
+
+.sucesso {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sucesso i {
+  font-size: 52px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.resultado {
+  background: #0d0d14;
+  border: 1px solid #1f1f2e;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.resultado small {
+  font-size: 11px;
+  color: #4b5563;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.resultado p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #818cf8;
+  margin: 0;
+  word-break: break-all;
+}

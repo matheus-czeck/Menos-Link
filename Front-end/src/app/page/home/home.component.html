@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="card">
+    <div class="logo">
+      <h1>Menos<span class="destaque">Link</span></h1>
+      <p>Encurte qualquer link em segundos</p>
+    </div>
+    <ng-container *ngIf="!linkGerado">
+      <div class="field">
+        <label>URL original</label>
+        <input
+          pInputText
+          type="text"
+          [(ngModel)]="urlOriginal"
+          placeholder="Sua URL longa"
+        />
+      </div>
+      <div class="toggle-row">
+        <p-toggleButton
+          [(ngModel)]="personalizar"
+          [onLabel]="'Personalizar link'"
+          [offLabel]="'Personalizar link'"
+          [onIcon]="'pi pi-check'"
+          [offIcon]="'pi pi-times'"
+        />
+      </div>
+      <div class="field" *ngIf="personalizar">
+        <label>Link personalizado</label>
+        <input
+          pInputText
+          type="text"
+          [(ngModel)]="codigoPersonalizado"
+          placeholder="ex: meu-site"
+        />
+        <small
+          >menoslink.com/<strong>{{
+            codigoPersonalizado || "meu-site"
+          }}</strong></small
+        >
+      </div>
+
+      <p class="error" *ngIf="erro">{{ erro }}</p>
+      <p-button
+        label="Gerar link curto"
+        icon="pi pi-scissors"
+        [disabled]="btnDesabilitado"
+        [loading]="carregando"
+        (onClick)="gerarLink()"
+        styleClass="btn-full"
+      />
+    </ng-container>
+
+    <ng-container *ngIf="linkGerado">
+      <div class="sucesso">
+        <i class="pi pi-check-circle"></i>
+      </div>
+      <div class="resultado">
+        <small>seu link curto</small>
+        <p>menoslink.com/{{ linkGerado.codigo }}</p>
+      </div>
+
+      <p-button
+        [label]="copiado ? 'Copiado!' : 'Copiar link'"
+        [icon]="copiado ? 'pi pi-check' : 'pi pi-copy'"
+        (onClick)="copiarLink()"
+        styleClass="btn-full"
+      />
+      <p-button
+        label="Gerar novo link"
+        icon="pi pi-refresh"
+        (onClick)="novoLink()"
+        styleClass="btn-outline"
+      />
+    </ng-container>
+  </div>
+</div>
