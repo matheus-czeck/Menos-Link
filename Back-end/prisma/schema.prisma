@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+}
+
+model Link{
+id            String    @id @default(cuid())
+codigo        String    @unique 
+url_original  String 
+total_cliques Int       @default(0)
+senha         String? 
+qrcode_path   String?   
+criado_em     DateTime  @default(now())
+expira_em     DateTime? 
+
+cliques       Clique[]
+}
+
+
+model Clique {
+id            String    @id @default(cuid())
+linkId        String  
+clicadoEm     DateTime  @default(now())
+ip            String?
+pais          String?
+dispositivo   String?
+
+link          Link      @relation(fields: [linkId], references: [id])
+}
