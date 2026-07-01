@@ -58,7 +58,7 @@ Este projeto resolve isso centralizando a geração de links personalizáveis, p
 ---
 
 ## 🏗️ Arquitetura
-
+```
 MenosLink/
 ├── Back-end/
 │   ├── src/
@@ -88,7 +88,7 @@ MenosLink/
 │       └── pipes/      # Formatadores personalizados
 │
 └── package.json
-
+```
 
 ---
 
@@ -104,39 +104,49 @@ MenosLink/
 
 ```bash
 # 1. Clone o repositório
-git clone [https://github.com/matheus-czeck/MenosLink.git](https://github.com/matheus-czeck/MenosLink.git)
+git clone https://github.com/matheus-czeck/MenosLink.git
 cd MenosLink
 Back-end
-
-Bash
+````
+```Bash
 cd Back-end
 
-# Instale as dependências
+```
+```# Instale as dependências
 npm install
 
-# Configure as variáveis de ambiente
+```
+```# Configure as variáveis de ambiente
 cp .env.example .env
+
 # Edite o arquivo .env adicionando a sua URL de conexão do Neon PostgreSQL:
 # DATABASE_URL="postgresql://usuario:senha@ep-nome-da-instancia.neon.tech/menoslink?sslmode=require"
 
-# Execute as migrations para estruturar o banco
+```
+```# Execute as migrations para estruturar o banco
 npx prisma migrate dev
 
-# Inicie o servidor de desenvolvimento
+```
+```# Inicie o servidor de desenvolvimento
 npm run dev
 Front-end
-
-Bash
+```
+```Bash
 cd ../Front-end/menos-link
 
-# Instale as dependências
+```
+```# Instale as dependências
 npm install
 
-# Inicie a aplicação Angular
+```
+
+```# Inicie a aplicação Angular
 npm start
+```
 Abra seu navegador em http://localhost:4200.
 
-🗄️ Modelo de dados
+----
+```🗄️ Modelo de dados
 Snippet de código
 model Link{
 id            String    @id @default(cuid())
@@ -151,7 +161,6 @@ expira_em     DateTime?
 cliques       Clique[]
 }
 
-
 model Clique {
 id            String    @id @default(cuid())
 linkId        String  
@@ -163,6 +172,11 @@ dispositivo   String?
 link          Link      @relation(fields: [linkId], references: [id])
 }
 
+---
+```
 👨‍💻 Autor
 Matheus Henrique Czeck
 Estudante de Engenharia de Software · Dev Web Full Stack em formação
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-matheus--hcz-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matheus-hcz/)
+[![GitHub](https://img.shields.io/badge/GitHub-matheus--czeck-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/matheus-czeck)
