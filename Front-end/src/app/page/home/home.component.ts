@@ -10,6 +10,8 @@ import { LinkResponse } from '../../models/link.model';
 import { ActivatedRoute } from '@angular/router';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RedirectComponent } from '../redirect/redirect.component';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-home',
@@ -118,7 +120,7 @@ export class HomeComponent implements OnInit {
   }
 
   copiarLink(): void {
-    const url = `http://localhost:4200/${this.linkGerado?.codigo}`;
+    const url = `${environment.apiUrl}/${this.linkGerado?.codigo}`;
     navigator.clipboard.writeText(url);
     this.copiado = true;
     setTimeout(() => (this.copiado = false), 2000);
