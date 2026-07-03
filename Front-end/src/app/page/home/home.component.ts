@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit {
   }
 
   copiarLink(): void {
-    const url = `${environment.apiUrl}/${this.linkGerado?.codigo}`;
+    const url = `${environment.appUrl}/${this.linkGerado?.codigo}`;
     navigator.clipboard.writeText(url);
     this.copiado = true;
     setTimeout(() => (this.copiado = false), 2000);
