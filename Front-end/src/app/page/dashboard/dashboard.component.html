@@ -1,0 +1,46 @@
+<ng-container *ngIf="carregando">
+  <div class="carregando">
+    <i class="pi pi-spin pi-spinner"></i>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="estatisticas && !carregando">
+  <div class="secao">
+    <h4>Top estados</h4>
+    <div class="ranking" *ngIf="estatisticas.estados.length > 0; else semDados">
+      <div
+        class="ranking-item"
+        *ngFor="let item of estatisticas.estados; let i = index"
+      >
+        <span class="posicao">{{ i + 1 }}</span>
+        <span class="nome">{{ item.estado || "Desconhecido" }}</span>
+        <span class="total-item">{{ calcularPorcentagem(item.total) }}%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="secao">
+    <h4>Dispositivos</h4>
+    <div
+      class="ranking"
+      *ngIf="estatisticas.dispositivos.length > 0; else semDados"
+    >
+      <div class="ranking-item" *ngFor="let item of estatisticas.dispositivos">
+        <i
+          class="pi"
+          [ngClass]="{
+            'pi-mobile': item.dispositivo === 'mobile',
+            'pi-desktop': item.dispositivo === 'Desktop',
+            'pi-tablet': item.dispositivo === 'tablet',
+          }"
+        ></i>
+        <span class="nome">{{ item.dispositivo || "Desconhecido" }}</span>
+        <span class="total-item">{{ calcularPorcentagem(item.total) }}%</span>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #semDados>
+    <p class="sem-dados">Nenhum dado disponível ainda</p>
+  </ng-template>
+</ng-container>

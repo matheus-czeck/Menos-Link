@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-HttpClient;
 import { Observable } from 'rxjs';
 import { environment } from '../environment/environment';
-import {LinkRequest, LinkResponse} from '../models/link.model';
-
+import { LinkRequest, LinkResponse, Estatisticas } from '../models/link.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +14,23 @@ export class LinkService {
 
   encurtarLink(data: LinkRequest): Observable<LinkResponse> {
     return this.http.post<LinkResponse>(`${this.apiUrl}/encurtar`, data);
+  }
+  gerarQrcode(codigo: string): Observable<{ qrcode: string }> {
+    return this.http.get<{ qrcode: string }>(`${this.apiUrl}/qrcode/${codigo}`);
+  }
+  verificarSenha(
+    codigo: string,
+    senha: string,
+  ): Observable<{ urlOriginal: string }> {
+    return this.http.post<{ urlOriginal: string }>(`${this.apiUrl}/acessar`, {
+      codigo,
+      senha,
+    });
+  }
+  redirecionarLink(codigo: string): Observable<void> {
+    return this.http.get<void>(`${this.apiUrl}/${codigo}`);
+  }
+  buscarEstatisticas(): Observable<Estatisticas> {
+    return this.http.get<Estatisticas>(`${this.apiUrl}/estatisticas`);
   }
 }

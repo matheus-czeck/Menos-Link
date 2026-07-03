@@ -27,6 +27,7 @@ linkId        String
 clicadoEm     DateTime  @default(now())
 ip            String?
 pais          String?
+estado        String?
 dispositivo   String?
 
 link          Link      @relation(fields: [linkId], references: [id])

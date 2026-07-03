@@ -1,75 +1,136 @@
-<div class="container">
-  <div class="card">
-    <div class="logo">
-      <h1>Menos<span class="destaque">Link</span></h1>
-      <p>Encurte qualquer link em segundos</p>
+<!-- MODAL DE SENHA -->
+<app-redirect
+  *ngIf="modalSenhaVisivel"
+  [codigo]="codigoProtegido"
+  (fechar)="fecharModalSenha()"
+/>
+<div class="pagina">
+  <div class="direita">
+    <div class="card">
+      <div class="logo">
+        <h1>Menos<span class="destaque">Link</span></h1>
+        <p>Encurte qualquer link em segundos</p>
+      </div>
+      <app-dashboard />
+      <ng-container *ngIf="!linkGerado">
+        <div class="field">
+          <label>URL original</label>
+          <input
+            pInputText
+            type="text"
+            [(ngModel)]="urlOriginal"
+            placeholder="https://seulink.com/muito-longo"
+          />
+        </div>
+
+        <div class="toggle-row">
+          <p-toggleButton
+            [(ngModel)]="personalizar"
+            [onLabel]="'Personalizar link'"
+            [offLabel]="'Personalizar link'"
+            [onIcon]="'pi pi-check'"
+            [offIcon]="'pi pi-times'"
+          />
+        </div>
+
+        <div class="field" *ngIf="personalizar">
+          <label>Link personalizado</label>
+          <input
+            pInputText
+            type="text"
+            [(ngModel)]="codigoPersonalizado"
+            placeholder="ex: meu-site"
+          />
+          <small
+            >menoslink.com/<strong>{{
+              codigoPersonalizado || "meu-site"
+            }}</strong></small
+          >
+        </div>
+
+        <div class="toggle-row">
+          <p-toggleButton
+            [(ngModel)]="protegerComSenha"
+            [onLabel]="'Proteger com senha'"
+            [offLabel]="'Proteger com senha'"
+            [onIcon]="'pi pi-lock'"
+            [offIcon]="'pi pi-lock-open'"
+          />
+        </div>
+
+        <div class="field" *ngIf="protegerComSenha">
+          <label>Senha</label>
+          <input
+            pInputText
+            type="password"
+            [(ngModel)]="senha"
+            placeholder="Digite uma senha"
+          />
+        </div>
+
+        <div class="field">
+          <label>Expiração</label>
+          <div class="expiracao-opcoes">
+            <button
+              *ngFor="let opcao of opcoesExpiracao"
+              class="opcao-btn"
+              [class.ativo]="expiraEm === opcao.value"
+              (click)="expiraEm = opcao.value"
+            >
+              {{ opcao.label }}
+            </button>
+          </div>
+        </div>
+
+        <p class="erro" *ngIf="erro">{{ erro }}</p>
+
+        <p-button
+          label="Gerar link curto"
+          icon="pi pi-scissors"
+          [disabled]="btnDesabilitado"
+          [loading]="carregando"
+          (onClick)="gerarLink()"
+          styleClass="btn-full"
+        />
+      </ng-container>
+
+      <ng-container *ngIf="linkGerado">
+        <div class="sucesso">
+          <i class="pi pi-check-circle"></i>
+        </div>
+
+        <div class="resultado">
+          <small>seu link curto</small>
+          <p>menoslink.com/{{ linkGerado.codigo }}</p>
+        </div>
+
+        <div class="qrcode-box" *ngIf="exibirQrcode && qrcode">
+          <img [src]="qrcode" alt="QR Code" />
+        </div>
+
+        <div class="botoes">
+          <p-button
+            [label]="copiado ? 'Copiado!' : 'Copiar link'"
+            [icon]="copiado ? 'pi pi-check' : 'pi pi-copy'"
+            (onClick)="copiarLink()"
+            styleClass="btn-full"
+          />
+
+          <p-button
+            [label]="exibirQrcode ? 'Ocultar QR Code' : 'Ver QR Code'"
+            icon="pi pi-qrcode"
+            (onClick)="verQrcode()"
+            styleClass="btn-outline"
+          />
+
+          <p-button
+            label="Gerar novo link"
+            icon="pi pi-refresh"
+            (onClick)="novoLink()"
+            styleClass="btn-outline"
+          />
+        </div>
+      </ng-container>
     </div>
-    <ng-container *ngIf="!linkGerado">
-      <div class="field">
-        <label>URL original</label>
-        <input
-          pInputText
-          type="text"
-          [(ngModel)]="urlOriginal"
-          placeholder="Sua URL longa"
-        />
-      </div>
-      <div class="toggle-row">
-        <p-toggleButton
-          [(ngModel)]="personalizar"
-          [onLabel]="'Personalizar link'"
-          [offLabel]="'Personalizar link'"
-          [onIcon]="'pi pi-check'"
-          [offIcon]="'pi pi-times'"
-        />
-      </div>
-      <div class="field" *ngIf="personalizar">
-        <label>Link personalizado</label>
-        <input
-          pInputText
-          type="text"
-          [(ngModel)]="codigoPersonalizado"
-          placeholder="ex: meu-site"
-        />
-        <small
-          >menoslink.com/<strong>{{
-            codigoPersonalizado || "meu-site"
-          }}</strong></small
-        >
-      </div>
-
-      <p class="error" *ngIf="erro">{{ erro }}</p>
-      <p-button
-        label="Gerar link curto"
-        icon="pi pi-scissors"
-        [disabled]="btnDesabilitado"
-        [loading]="carregando"
-        (onClick)="gerarLink()"
-        styleClass="btn-full"
-      />
-    </ng-container>
-
-    <ng-container *ngIf="linkGerado">
-      <div class="sucesso">
-        <i class="pi pi-check-circle"></i>
-      </div>
-      <div class="resultado">
-        <small>seu link curto</small>
-        <p>menoslink.com/{{ linkGerado.codigo }}</p>
-      </div>
-
-      <p-button
-        [label]="copiado ? 'Copiado!' : 'Copiar link'"
-        [icon]="copiado ? 'pi pi-check' : 'pi pi-copy'"
-        (onClick)="copiarLink()"
-        styleClass="btn-full"
-      />
-      <p-button
-        label="Gerar novo link"
-        icon="pi pi-refresh"
-        (onClick)="novoLink()"
-        styleClass="btn-outline"
-      />
-    </ng-container>
   </div>
 </div>

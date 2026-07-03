@@ -10,3 +10,8 @@ export interface LinkRequest {
   urlOriginal: string;
   codigo?: string;
 }
+export interface Estatisticas {
+  totalCliques: number;
+  estados: { estado: string; total: number }[];
+  dispositivos: { dispositivo: string; total: number }[];
+}

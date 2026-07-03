@@ -27,10 +27,13 @@ Este projeto resolve isso centralizando a geração de links personalizáveis, p
 ## ✨ Funcionalidades
 
 - [x] Interface inicial com opções básicas de configuração
-- [ ] Geração de links curtos aleatórios e seguros (via `nanoId`)
-- [ ] Customização de links com termos personalizados (custom slugs)
-- [ ] Proteção de URLs por senha para acesso restrito
-- [ ] Geração dinâmica de QR Code para compartilhamento rápido
+- [x] Geração de links curtos aleatórios e seguros (via `nanoId`)
+- [x] Customização de links com termos personalizados
+- [x] Proteção de URLs por senha para acesso restrito
+- [x] Geração dinâmica de QR Code para compartilhamento rápido
+- [x] Expiração de links (24h, 7 dias, 30 dias ou nunca)
+- [x] Rastreamento de cliques (estado e dispositivo)
+
 
 ---
 
@@ -62,13 +65,12 @@ Este projeto resolve isso centralizando a geração de links personalizáveis, p
 MenosLink/
 ├── Back-end/
 │   ├── src/
+│   │   ├── __test__        # Testes unitarios
 │   │   ├── controllers/    # Controladores que gerenciam as requisições das URLs
-│   │   ├── dtos/           # Validação e regras de transferência de dados
-│   │   ├── errors/         # Tratamento customizado de exceções
-│   │   ├── middleware/     # Middlewares (validação de senhas, erros, etc)
+│   │   ├── models/         # Validação e regras de negocios
 │   │   ├── repositories/   # Camada de comunicação com o Neon Postgres via Prisma
-│   │   ├── routes/         # Definição dos endpoints da API (/encurtar, /:slug)
-│   │   ├── services/       # Regras de negócio (geração de nanoId, hash de senhas)
+│   │   ├── routes/         # Definição dos endpoints da API 
+│   │   ├── services/       # Direcionamento de responsabilidades 
 │   │   ├── index.ts        # Inicialização e configuração do Express
 │   │   └── server.ts       # Conexão com o banco de dados e inicialização do servidor
 │   │
@@ -81,11 +83,10 @@ MenosLink/
 └── Front-end
 │   ├── src/
 │   └── app/
-│       ├── components/ # Componentes visuais (Formulário, Card de Resultado, Dashboard)
-│       ├── services/   # Consumo dos endpoints do Back-end
-│       ├── models/     # Interfaces e tipagens das URLs
-│       ├── environments/ # Configurações de rotas locais e de produção (Deploy)
-│       └── pipes/      # Formatadores personalizados
+│       ├── pages/          # Componentes visuais 
+│       ├── services/       # Consumo dos endpoints do Back-end
+│       ├── models/         # Interfaces e tipagens das URLs
+│       └── environments/   # Configurações de rotas locais e de produção (Deploy)
 │
 └── package.json
 ```
@@ -121,6 +122,7 @@ cp .env.example .env
 
 # Edite o arquivo .env adicionando a sua URL de conexão do Neon PostgreSQL:
 # DATABASE_URL="postgresql://usuario:senha@ep-nome-da-instancia.neon.tech/menoslink?sslmode=require"
+# BASE_URL=http://localhost:3000
 
 ```
 ```# Execute as migrations para estruturar o banco

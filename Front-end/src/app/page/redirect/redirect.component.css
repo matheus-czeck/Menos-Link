@@ -1,0 +1,120 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.modal {
+  background: #111118;
+  border: 1px solid #1f1f2e;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.modal-header i.pi-lock {
+  font-size: 18px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.modal-header h3 {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: #e5e7eb;
+  margin: 0;
+}
+
+.modal-fechar {
+  background: transparent;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.modal-fechar:hover {
+  color: #9ca3af;
+}
+
+.modal-descricao {
+  font-size: 13px;
+  color: #4b5563;
+  margin: 0 0 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+:host ::ng-deep .field .p-inputtext {
+  background: #0d0d14 !important;
+  border: 1px solid #1f1f2e !important;
+  border-radius: 8px !important;
+  color: #e5e7eb !important;
+  font-size: 14px !important;
+  padding: 12px 16px !important;
+  width: 100% !important;
+}
+
+:host ::ng-deep .field .p-inputtext:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+  outline: none !important;
+}
+
+.erro {
+  color: #f87171;
+  font-size: 13px;
+  margin-bottom: 1.25rem;
+  padding: 10px 14px;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 8px;
+}
+
+:host ::ng-deep .btn-full .p-button {
+  width: 100% !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 13px 20px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  gap: 8px !important;
+}
+
+:host ::ng-deep .btn-full .p-button .p-button-icon,
+:host ::ng-deep .btn-full .p-button .p-button-label {
+  margin: 0 !important;
+  flex: none !important;
+}

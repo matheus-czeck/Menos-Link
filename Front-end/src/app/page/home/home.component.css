@@ -1,29 +1,37 @@
+/* ===== LAYOUT GERAL ===== */
 :host {
   display: block;
   min-height: 100vh;
   background: #0a0a0f;
+}
+
+.pagina {
   display: flex;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  gap: 3rem;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.container {
-  width: 100%;
-  max-width: 520px;
-}
 
 .logo {
-  text-align: center;
+  display:  flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 3rem;
 }
 
 .logo h1 {
-  font-size: 42px;
+  font-size: 52px;
   font-weight: 300;
   color: #ffffff;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
   margin: 0 0 8px;
+  line-height: 1;
 }
 
 .logo h1 span {
@@ -40,6 +48,12 @@
   letter-spacing: 0.5px;
 }
 
+/* ===== DIREITA / CARD ===== */
+.direita {
+  flex: 1;
+  max-width: 460px;
+}
+
 .card {
   background: #111118;
   border: 1px solid #1f1f2e;
@@ -47,6 +61,7 @@
   padding: 2.5rem;
 }
 
+/* ===== CAMPOS ===== */
 .field {
   display: flex;
   flex-direction: column;
@@ -93,6 +108,7 @@
   color: #374151 !important;
 }
 
+/* ===== TOGGLES ===== */
 .toggle-row {
   margin-bottom: 1.5rem;
 }
@@ -113,10 +129,36 @@
   color: #818cf8 !important;
 }
 
-:host ::ng-deep .p-togglebutton:hover {
-  border-color: #374151 !important;
+/* ===== EXPIRAÇÃO ===== */
+.expiracao-opcoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
+.opcao-btn {
+  padding: 8px 16px;
+  background: #0d0d14;
+  border: 1px solid #1f1f2e;
+  border-radius: 8px;
+  color: #6b7280;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.opcao-btn.ativo {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: #6366f1;
+  color: #818cf8;
+}
+
+.opcao-btn:hover {
+  border-color: #374151;
+  color: #9ca3af;
+}
+
+/* ===== ERRO ===== */
 .erro {
   color: #f87171;
   font-size: 13px;
@@ -127,6 +169,7 @@
   border-radius: 8px;
 }
 
+/* ===== BOTÕES ===== */
 :host ::ng-deep .btn-full .p-button {
   width: 100% !important;
   justify-content: center !important;
@@ -136,16 +179,23 @@
   padding: 13px 20px !important;
   font-size: 14px !important;
   font-weight: 500 !important;
-  letter-spacing: 0.3px !important;
-  transition: opacity 0.2s !important;
   gap: 8px !important;
+  transition: opacity 0.2s !important;
 }
 
-:host ::ng-deep .btn-full .p-button .p-button-icon {
+:host ::ng-deep .btn-full .p-button:disabled {
+  background: #1f1f2e !important;
+  color: #374151 !important;
+  opacity: 1 !important;
+}
+
+:host ::ng-deep .btn-full .p-button .p-button-icon,
+:host ::ng-deep .btn-outline .p-button .p-button-icon {
   margin: 0 !important;
 }
 
-:host ::ng-deep .btn-full .p-button .p-button-label {
+:host ::ng-deep .btn-full .p-button .p-button-label,
+:host ::ng-deep .btn-outline .p-button .p-button-label {
   flex: none !important;
 }
 
@@ -158,17 +208,8 @@
   padding: 13px 20px !important;
   font-size: 14px !important;
   color: #6b7280 !important;
-  margin-top: 10px !important;
-  transition: all 0.2s !important;
   gap: 8px !important;
-}
-
-:host ::ng-deep .btn-outline .p-button .p-button-icon {
-  margin: 0 !important;
-}
-
-:host ::ng-deep .btn-outline .p-button .p-button-label {
-  flex: none !important;
+  transition: all 0.2s !important;
 }
 
 :host ::ng-deep .btn-outline .p-button:hover {
@@ -176,6 +217,13 @@
   color: #9ca3af !important;
 }
 
+.botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ===== RESULTADO ===== */
 .sucesso {
   text-align: center;
   margin-bottom: 2rem;
@@ -211,4 +259,37 @@
   color: #818cf8;
   margin: 0;
   word-break: break-all;
+}
+
+/* ===== QR CODE ===== */
+.qrcode-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.qrcode-box img {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+  border: 1px solid #1f1f2e;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  .pagina {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .esquerda, .direita {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .logo h1 {
+    font-size: 36px;
+  }
 }
