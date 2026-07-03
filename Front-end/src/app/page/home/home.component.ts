@@ -133,6 +133,8 @@ export class HomeComponent implements OnInit {
     this.linkGerado = null;
     this.copiado = false;
     this.erro = '';
+    this.qrcode = null;
+    this.exibirQrcode = false
   }
 
   verificarSeTemSenha(codigo: string): void {
