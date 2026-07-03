@@ -12,7 +12,6 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RedirectComponent } from '../redirect/redirect.component';
 import { environment } from '../../environments/environment';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -63,7 +62,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const codigo = this.route.snapshot.paramMap.get('codigo');
     if (codigo) {
-      this.abrirModalSenha(codigo);
+      this.codigoProtegido = codigo;
       this.verificarSeTemSenha(codigo);
     }
   }
@@ -138,12 +137,14 @@ export class HomeComponent implements OnInit {
 
   verificarSeTemSenha(codigo: string): void {
     this.linkService.redirecionarLink(codigo).subscribe({
-      next: () => {},
+      next: () => {
+        window.location.href = `${environment.apiUrl}/${codigo}`;
+      },
       error: (err) => {
         if (err.status === 401) {
           this.modalSenhaVisivel = true;
         } else {
-          this.modalSenhaVisivel = false;
+          window.location.href = `${environment.apiUrl}/${codigo}`
         }
       },
     });
