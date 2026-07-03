@@ -55,7 +55,7 @@ class LinkModel {
     if (link.expira_em && link.expira_em < new Date()) {
       throw new Error("Link expirado!");
     }
-    if (link.senha) throw new Error("Link protegido por senha!");
+    if (link.senha !== null) throw new Error("Link protegido por senha!");
 
     return link;
   }
