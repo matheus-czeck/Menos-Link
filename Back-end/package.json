@@ -4,13 +4,11 @@
   "description": "Projeto full-stack, encurtador de URls sendo possivel definir um nome ou uma url aleatoria",
   "type": "module",
   "main": "index.js",
-
   "scripts": {
-    "test": "vitest",
     "dev": "npx tsx watch src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
-   
+    "build": "prisma generate && tsc",
+    "start": "node dist/server.js",
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
