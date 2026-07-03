@@ -1,8 +1,8 @@
 import { nanoid } from "nanoid";
-import { prisma } from "../repositories/database.ts";
+import { prisma } from "../repositories/database.js";
 import qrcode from "qrcode";
 import bcrypt from "bcrypt";
-import CliqueModel from "./clique.model.ts";
+import CliqueModel from "./clique.model.js";
 
 class LinkModel {
   static gerarLink(tamanho = 6): string {

@@ -1,5 +1,5 @@
-import LinkModel from "../models/link.models.ts";
-import CliqueModel from "../models/clique.model.ts";
+import LinkModel from "../models/link.models.js";
+import CliqueModel from "../models/clique.model.js";
 
 class LinkService {
   static async encurtarLink(

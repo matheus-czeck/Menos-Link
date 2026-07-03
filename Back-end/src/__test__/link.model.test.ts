@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import LinkModel from "../models/link.models.ts";
-import { prisma } from "../repositories/database.ts";
+import LinkModel from "../models/link.models.js";
+import { prisma } from "../repositories/database.js";
 
 
 vi.mock("../repositories/database.ts", () => ({

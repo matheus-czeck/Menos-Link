@@ -1,4 +1,4 @@
-import { prisma } from "../repositories/database.ts";
+import { prisma } from "../repositories/database.js";
 import geoip from "geoip-lite";
 import { UAParser } from "ua-parser-js";
 

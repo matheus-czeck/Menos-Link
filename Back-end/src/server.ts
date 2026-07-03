@@ -1,5 +1,5 @@
-import app from "./index.ts";
-import { prisma } from "./repositories/database.ts";
+import app from "./index.js";
+import { prisma } from "./repositories/database.js";
 
 const PORT = process.env.PORT || 3000;
 

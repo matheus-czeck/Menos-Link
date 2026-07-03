@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import LinkService from "../services/link.service.ts";
+import LinkService from "../services/link.service.js";
 
 class LinkController {
   static async encurtarLink(req: Request, res: Response) {

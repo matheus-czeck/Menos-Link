@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import CliqueModel from "../models/clique.model.ts";
-import { prisma } from "../repositories/database.ts";
+import CliqueModel from "../models/clique.model.js";
+import { prisma } from "../repositories/database.js";
 
 vi.mock("../repositories/database.ts", () => ({
   prisma: {
