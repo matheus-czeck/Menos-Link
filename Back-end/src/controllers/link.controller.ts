@@ -53,7 +53,7 @@ class LinkController {
   static async verificaSenha(req: Request, res: Response) {
     try {
       const ip = req.ip as string;
-      const userAgent = req.headers["user-agent"];
+      const userAgent = req.headers["user-agent"] as string; 
       const { codigo, senha } = req.body as { codigo: string; senha: string };
 
       const urlOriginal = await LinkService.verificarSenha(

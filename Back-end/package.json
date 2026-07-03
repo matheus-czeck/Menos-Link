@@ -4,11 +4,13 @@
   "description": "Projeto full-stack, encurtador de URls sendo possivel definir um nome ou uma url aleatoria",
   "type": "module",
   "main": "index.js",
+
   "scripts": {
     "test": "vitest",
     "dev": "npx tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js"
+   
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   "homepage": "https://github.com/matheus-czeck/Menos-Link#readme",
   "dependencies": {
     "@prisma/client": "^7.8.0",
+    "@prisma/adapter-pg": "^7.8.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.0.1",
@@ -36,7 +39,6 @@
     "ua-parser-js": "^2.0.10"
   },
   "devDependencies": {
-    "@prisma/adapter-pg": "^7.8.0",
     "@types/bcrypt": "^6.0.0",
     "@types/geoip-lite": "^1.4.4",
     "@types/qrcode": "^1.5.6",

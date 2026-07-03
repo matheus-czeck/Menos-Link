@@ -72,7 +72,12 @@ class LinkModel {
     return qrcode.toDataURL(link);
   }
 
-  static async verificarSenha(codigo: string, senha: string, ip: string, userAgent: string) {
+  static async verificarSenha(
+    codigo: string,
+    senha: string,
+    ip: string,
+    userAgent: string,
+  ) {
     const link = await prisma.link.findUnique({ where: { codigo } });
     if (!link) throw new Error("Link nao encontrado!");
     if (!link.senha) throw new Error("Link nao possui senha!");
@@ -103,21 +108,21 @@ class LinkModel {
 
     return {
       totalCliques,
-      estados: estados.map((e) => ({
+      estados: estados.map((e: any) => ({
         estado: e.estado,
         total: e._count.estado,
       })),
-      dispositivos: dispositivos.map((d) => ({
+      dispositivos: dispositivos.map((d: any) => ({
         dispositivo: d.dispositivo,
         total: d._count.dispositivo,
       })),
     };
   }
 
-  static async buscarLinkParaQrcode(codigo: string){
-    const link = await prisma.link.findUnique({ where: { codigo }})
-    if(!link) throw new Error("Link nao encontrado!")
-      return link 
+  static async buscarLinkParaQrcode(codigo: string) {
+    const link = await prisma.link.findUnique({ where: { codigo } });
+    if (!link) throw new Error("Link nao encontrado!");
+    return link;
   }
 }
 
