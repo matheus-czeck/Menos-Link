@@ -92,12 +92,7 @@ class LinkModel {
   }
 
   static async buscarEstatisticas() {
-    const estados = await prisma.clique.groupBy({
-      by: ["estado"],
-      _count: { estado: true },
-      orderBy: { _count: { estado: "desc" } },
-    });
-
+  
     const dispositivos = await prisma.clique.groupBy({
       by: ["dispositivo"],
       _count: { dispositivo: true },
@@ -108,10 +103,6 @@ class LinkModel {
 
     return {
       totalCliques,
-      estados: estados.map((e: any) => ({
-        estado: e.estado,
-        total: e._count.estado,
-      })),
       dispositivos: dispositivos.map((d: any) => ({
         dispositivo: d.dispositivo,
         total: d._count.dispositivo,

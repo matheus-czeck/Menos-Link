@@ -6,21 +6,9 @@
 
 <ng-container *ngIf="estatisticas && !carregando">
   <div class="secao">
-    <h4>Top estados</h4>
-    <div class="ranking" *ngIf="estatisticas.estados.length > 0; else semDados">
-      <div
-        class="ranking-item"
-        *ngFor="let item of estatisticas.estados; let i = index"
-      >
-        <span class="posicao">{{ i + 1 }}</span>
-        <span class="nome">{{ item.estado || "Desconhecido" }}</span>
-        <span class="total-item">{{ calcularPorcentagem(item.total) }}%</span>
-      </div>
-    </div>
-  </div>
-
+   
   <div class="secao">
-    <h4>Dispositivos</h4>
+    <h4>Top Dispositivos</h4>
     <div
       class="ranking"
       *ngIf="estatisticas.dispositivos.length > 0; else semDados"

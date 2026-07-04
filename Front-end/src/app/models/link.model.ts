@@ -12,6 +12,5 @@ export interface LinkRequest {
 }
 export interface Estatisticas {
   totalCliques: number;
-  estados: { estado: string; total: number }[];
   dispositivos: { dispositivo: string; total: number }[];
 }
