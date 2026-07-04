@@ -5,10 +5,9 @@
 </ng-container>
 
 <ng-container *ngIf="estatisticas && !carregando">
+
   <div class="secao">
-   
-  <div class="secao">
-    <h4>Top Dispositivos</h4>
+    <h4>Dispositivos</h4>
     <div
       class="ranking"
       *ngIf="estatisticas.dispositivos.length > 0; else semDados"
