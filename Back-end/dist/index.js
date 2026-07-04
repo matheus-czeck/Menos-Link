@@ -6,4 +6,3 @@ app.use(express.json());
 app.use(cors());
 app.use("/", linkRoutes);
 export default app;
-//# sourceMappingURL=index.js.map

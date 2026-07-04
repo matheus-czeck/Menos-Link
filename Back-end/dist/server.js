@@ -1,3 +1,4 @@
+import "dotenv/config";
 import app from "./index.js";
 import { prisma } from "./repositories/database.js";
 const PORT = process.env.PORT || 3000;
@@ -16,4 +17,3 @@ async function iniciaServidor() {
     }
 }
 iniciaServidor();
-//# sourceMappingURL=server.js.map

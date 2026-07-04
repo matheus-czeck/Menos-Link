@@ -20,4 +20,3 @@ class CliqueModel {
     }
 }
 export default CliqueModel;
-//# sourceMappingURL=clique.model.js.map

@@ -67,4 +67,3 @@ class LinkController {
     }
 }
 export default LinkController;
-//# sourceMappingURL=link.controller.js.map

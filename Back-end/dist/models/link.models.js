@@ -41,7 +41,7 @@ class LinkModel {
         if (link.expira_em && link.expira_em < new Date()) {
             throw new Error("Link expirado!");
         }
-        if (link.senha)
+        if (link.senha !== null)
             throw new Error("Link protegido por senha!");
         return link;
     }
@@ -69,11 +69,6 @@ class LinkModel {
         return link.url_original;
     }
     static async buscarEstatisticas() {
-        const estados = await prisma.clique.groupBy({
-            by: ["estado"],
-            _count: { estado: true },
-            orderBy: { _count: { estado: "desc" } },
-        });
         const dispositivos = await prisma.clique.groupBy({
             by: ["dispositivo"],
             _count: { dispositivo: true },
@@ -82,10 +77,6 @@ class LinkModel {
         const totalCliques = await prisma.clique.count();
         return {
             totalCliques,
-            estados: estados.map((e) => ({
-                estado: e.estado,
-                total: e._count.estado,
-            })),
             dispositivos: dispositivos.map((d) => ({
                 dispositivo: d.dispositivo,
                 total: d._count.dispositivo,
@@ -100,4 +91,3 @@ class LinkModel {
     }
 }
 export default LinkModel;
-//# sourceMappingURL=link.models.js.map

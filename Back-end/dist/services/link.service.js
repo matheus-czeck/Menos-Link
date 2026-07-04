@@ -26,4 +26,3 @@ class LinkService {
     }
 }
 export default LinkService;
-//# sourceMappingURL=link.service.js.map

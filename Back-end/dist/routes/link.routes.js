@@ -7,4 +7,3 @@ router.get("/qrcode/:codigo", LinkController.gerarQrcode);
 router.get("/estatisticas", LinkController.buscarEstatisticas);
 router.get("/:codigo", LinkController.redirecionarLink);
 export default router;
-//# sourceMappingURL=link.routes.js.map
