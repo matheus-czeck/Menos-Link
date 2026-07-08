@@ -4,7 +4,7 @@
 
 <p>Aplicação web Full-stack — encurte seus links, personalize, adicione senhas e gere QR Codes em um só lugar.</p>
 
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow?style=flat-square)
+![Status](https://img.shields.io/badge/status-%20finalizado-grenn?style=flat-square)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Angular](https://img.shields.io/badge/Angular-17+-DD0031?style=flat-square&logo=angular&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-22+-339933?style=flat-square&logo=nodedotjs&logoColor=white)
