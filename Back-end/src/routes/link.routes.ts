@@ -7,6 +7,7 @@ router.post("/encurtar", LinkController.encurtarLink);
 router.post("/acessar", LinkController.verificaSenha);
 router.get("/qrcode/:codigo", LinkController.gerarQrcode);
 router.get("/estatisticas", LinkController.buscarEstatisticas);
-router.get("/:codigo", LinkController.redirecionarLink);
+router.post("/:codigo/acessar", LinkController.redirecionarLink);
+router.get("/:codigo", LinkController.encontrarLink)
 
 export default router;

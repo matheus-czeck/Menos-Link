@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
@@ -15,6 +14,8 @@ import { LinkService } from '../../services/link.service';
 })
 export class RedirectComponent {
   @Input() codigo = '';
+  @Input() temSenha = false;
+  @Input() totalCliques = 0;
   @Output() fechar = new EventEmitter<void>();
 
   senha = '';

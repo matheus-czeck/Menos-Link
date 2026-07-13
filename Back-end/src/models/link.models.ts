@@ -55,7 +55,6 @@ class LinkModel {
     if (link.expira_em && link.expira_em < new Date()) {
       throw new Error("Link expirado!");
     }
-    if (link.senha !== null) throw new Error("Link protegido por senha!");
 
     return link;
   }
@@ -80,10 +79,14 @@ class LinkModel {
   ) {
     const link = await prisma.link.findUnique({ where: { codigo } });
     if (!link) throw new Error("Link nao encontrado!");
-    if (!link.senha) throw new Error("Link nao possui senha!");
+    if (link.senha !== null) {
+      const senhaValida = await bcrypt.compare(senha, link.senha);
+      if (!senhaValida) throw new Error("Senha incorreta!");
+      await LinkModel.registrarClique(link.id);
+      await CliqueModel.registrarClique(link.id, ip, userAgent);
 
-    const senhaValida = await bcrypt.compare(senha, link.senha);
-    if (!senhaValida) throw new Error("Senha incorreta!");
+      return link.url_original;
+    }
 
     await LinkModel.registrarClique(link.id);
     await CliqueModel.registrarClique(link.id, ip, userAgent);
@@ -92,7 +95,6 @@ class LinkModel {
   }
 
   static async buscarEstatisticas() {
-  
     const dispositivos = await prisma.clique.groupBy({
       by: ["dispositivo"],
       _count: { dispositivo: true },

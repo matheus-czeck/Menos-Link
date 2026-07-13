@@ -30,6 +30,10 @@ export class LinkService {
   redirecionarLink(codigo: string): Observable<void> {
     return this.http.get<void>(`${this.apiUrl}/${codigo}`);
   }
+  acessarLink(codigo: string):Observable<{temSenha: boolean, totalCliques: number}>{
+    return this.http.get<{temSenha: boolean; totalCliques: number}>(`${this.apiUrl}/${codigo}`)
+  }
+  
   buscarEstatisticas(): Observable<Estatisticas> {
     return this.http.get<Estatisticas>(`${this.apiUrl}/estatisticas`);
   }

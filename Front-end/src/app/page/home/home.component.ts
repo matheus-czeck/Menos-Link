@@ -38,6 +38,8 @@ export class HomeComponent implements OnInit {
   erro = '';
   protegerComSenha = false;
   senha = '';
+  temSenha: boolean = false;
+  totalCliques: number = 0 
 
   expiraEm: number | null = null;
 
@@ -138,16 +140,14 @@ export class HomeComponent implements OnInit {
   }
 
   verificarSeTemSenha(codigo: string): void {
-    this.linkService.redirecionarLink(codigo).subscribe({
-      next: () => {
-        window.location.href = `${environment.apiUrl}/${codigo}`;
+    this.linkService.acessarLink(codigo).subscribe({
+      next: (res) => {
+        this.temSenha = res.temSenha
+        this.totalCliques = res.totalCliques
+        this.modalSenhaVisivel = true
       },
-      error: (err) => {
-        if (err.status === 401) {
-          this.modalSenhaVisivel = true;
-        } else {
-          window.location.href = `${environment.apiUrl}/${codigo}`
-        }
+      error: () => {
+       this.erro = "Erro ao acessar URl"
       },
     });
   }

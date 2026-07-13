@@ -17,6 +17,16 @@ class LinkController {
     }
   }
 
+  static async encontrarLink(req: Request, res: Response) {
+    const { codigo } = req.params as { codigo: string };
+    try {
+      const { temSenha, totalCliques } = await LinkService.encontrarLink(codigo);
+        res.status(200).json({temSenha, totalCliques})
+    } catch (error) {
+      res.status(400).json({error: "O correu um eror interno."})
+    }
+  }
+
   static async redirecionarLink(req: Request, res: Response) {
     try {
       const ip = req.ip as string;
@@ -53,7 +63,7 @@ class LinkController {
   static async verificaSenha(req: Request, res: Response) {
     try {
       const ip = req.ip as string;
-      const userAgent = req.headers["user-agent"] as string; 
+      const userAgent = req.headers["user-agent"] as string;
       const { codigo, senha } = req.body as { codigo: string; senha: string };
 
       const urlOriginal = await LinkService.verificarSenha(

@@ -1,34 +1,40 @@
 <div class="modal-overlay" (click)="fecharModal()">
   <div class="modal" (click)="$event.stopPropagation()">
     <div class="modal-header">
-      <i class="pi pi-lock"></i>
-      <h3>Link protegido</h3>
+      <i class="pi" [ngClass]="temSenha ? 'pi-lock' : 'pi-link'"></i>
+      <h3>{{ temSenha ? "Link protegido" : "Acessar link" }}</h3>
       <button class="modal-fechar" (click)="fecharModal()">
         <i class="pi pi-times"></i>
       </button>
     </div>
 
-    <p class="modal-descricao">Digite a senha para acessar este link</p>
-
-    <div class="field">
-      <label>Senha</label>
-      <input
-        pInputText
-        type="password"
-        [(ngModel)]="senha"
-        placeholder="Digite a senha"
-      />
+    <div class="cliques">
+      <span class="cliques-numero">{{ totalCliques }}</span>
+      <span class="cliques-label">Cliques neste link</span>
     </div>
 
-    <p class="erro" *ngIf="erro">{{ erro }}</p>
+    <ng-container *ngIf="temSenha">
+      <p class="modal-descricao">Digite a senha para acessar este link</p>
+      <div class="field">
+        <label>Senha</label>
+        <input
+          pInputText
+          type="password"
+          [(ngModel)]="senha"
+          placeholder="Digite a senha"
+        />
+      </div>
+    </ng-container>
 
-    <p-button
-      label="Acessar link"
-      icon="pi pi-arrow-right"
-      [loading]="carregando"
-      [disabled]="!senha.trim()"
-      (onClick)="verificarSenha()"
-      styleClass="btn-full"
-    />
+    <ng-container>
+      <p class="erro" *ngIf="erro">{{ erro }}</p>
+      <p-button
+        label="Ir para o link"
+        icon="pi pi-arrow-right"
+        [loading]="carregando"
+        (onClick)="verificarSenha()"
+        styleClass="btn-full"
+      />
+    </ng-container>
   </div>
 </div>

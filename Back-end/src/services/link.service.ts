@@ -11,6 +11,20 @@ class LinkService {
     return LinkModel.criarLinkUnico(urlOriginal, codigo, expiraEm, senha);
   }
 
+  static async encontrarLink(codigo: string) {
+    let temSenha: boolean = false;
+    const link = await LinkModel.buscarLink(codigo);
+    if (!link) {
+      throw new Error("URL não encontrada!");
+    }
+    const totalCliques: number = link.total_cliques;
+    if (link.senha !== null) {
+      temSenha = true;
+    }
+
+    return { totalCliques, temSenha };
+  }
+
   static async redirecionarLink(codigo: string, ip: string, userAgent: string) {
     const link = await LinkModel.buscarLink(codigo);
     if (!link) throw new Error("Link nao encontrado!");
@@ -21,7 +35,12 @@ class LinkService {
     return link.url_original;
   }
 
-  static async verificarSenha(codigo: string, senha: string, ip: string, userAgent: string) {
+  static async verificarSenha(
+    codigo: string,
+    senha: string,
+    ip: string,
+    userAgent: string,
+  ) {
     return LinkModel.verificarSenha(codigo, senha, ip, userAgent);
   }
 

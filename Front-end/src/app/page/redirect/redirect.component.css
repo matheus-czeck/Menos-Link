@@ -23,10 +23,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 1.5rem;
 }
 
-.modal-header i.pi-lock {
+.modal-header i {
   font-size: 18px;
   background: linear-gradient(135deg, #6366f1, #a855f7);
   -webkit-background-clip: text;
@@ -54,10 +54,38 @@
   color: #9ca3af;
 }
 
+.cliques {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.12);
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.cliques-numero {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cliques-label {
+  font-size: 11px;
+  color: #4b5563;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
 .modal-descricao {
   font-size: 13px;
   color: #4b5563;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.25rem;
 }
 
 .field {

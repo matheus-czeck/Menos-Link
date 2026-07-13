@@ -2,6 +2,8 @@
 <app-redirect
   *ngIf="modalSenhaVisivel"
   [codigo]="codigoProtegido"
+  [temSenha]="temSenha"
+  [totalCliques]="totalCliques"
   (fechar)="fecharModalSenha()"
 />
 <div class="pagina">
@@ -101,7 +103,7 @@
 
         <div class="resultado">
           <small>seu link curto</small>
-          <p>menoslink.com/{{ linkGerado.codigo }}</p>
+          <p>menoslink.matheushcz.dev/{{ linkGerado.codigo }}</p>
         </div>
 
         <div class="qrcode-box" *ngIf="exibirQrcode && qrcode">
