@@ -82,16 +82,10 @@ class LinkModel {
     if (link.senha !== null) {
       const senhaValida = await bcrypt.compare(senha, link.senha);
       if (!senhaValida) throw new Error("Senha incorreta!");
-      await LinkModel.registrarClique(link.id);
-      await CliqueModel.registrarClique(link.id, ip, userAgent);
-
-      return link.url_original;
+      return link;
     }
 
-    await LinkModel.registrarClique(link.id);
-    await CliqueModel.registrarClique(link.id, ip, userAgent);
-
-    return link.url_original;
+    return link;
   }
 
   static async buscarEstatisticas() {

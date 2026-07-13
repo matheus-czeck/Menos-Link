@@ -41,7 +41,11 @@ class LinkService {
     ip: string,
     userAgent: string,
   ) {
-    return LinkModel.verificarSenha(codigo, senha, ip, userAgent);
+    const link = await LinkModel.verificarSenha(codigo, senha, ip, userAgent);
+
+    await LinkModel.registrarClique(link.id);
+    await CliqueModel.registrarClique(link.id, ip, userAgent);
+    return link.url_original;
   }
 
   static async gerarQrcode(codigo: string) {
